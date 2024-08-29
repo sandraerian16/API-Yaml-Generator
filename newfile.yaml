@@ -1,0 +1,53 @@
+
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: greeting-api
+  description: REST API for greeting service
+spec:
+  type: openapi
+  lifecycle: production
+  owner: Riyad-Bank-team
+  definition: | 
+  
+    
+    openapi: "3.0.3"
+    info:
+      title: "base-service API"
+      version: "1.0.0"
+    paths:
+      /hello/greeting/{name}/{id}:
+        get:
+          parameters:
+          - name: "id"
+            in: "path"
+            required: true
+            schema:
+              type: "string"
+          - name: "name"
+            in: "path"
+            required: true
+            schema:
+              type: "string"
+          responses:
+            "200":
+              description: "OK"
+              content:
+                text/plain:
+                  schema:
+                    type: "string"
+      /hello/hello/{name}:
+        get:
+          parameters:
+          - name: "name"
+            in: "path"
+            required: true
+            schema:
+              type: "string"
+          responses:
+            "200":
+              description: "OK"
+              content:
+                text/plain:
+                  schema:
+                    type: "string"
